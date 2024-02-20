@@ -67,6 +67,12 @@
             :model-value="props.modelValue.constructorPropertyPromotion"
             @update:model-value="(val) => updateSettings({ constructorPropertyPromotion: val })"
           />
+
+          <Checkbox
+            label="Download"
+            :model-value="props.modelValue.download"
+            @update:model-value="(val) => updateSettings({ download: val })"
+          />
         </div>
         <div>
           <FormGroup>

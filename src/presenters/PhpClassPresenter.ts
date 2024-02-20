@@ -105,6 +105,22 @@ export default class PhpClassPresenter {
                 .join('\n');
         }
 
+        if(this.settings.download) {
+            // credit: https://www.bitdegree.org/learn/javascript-download
+            const filename = this.getClassName()+'.php';
+            const downloadElement = document.createElement('a');
+            downloadElement.className = 'block';
+            downloadElement.innerText = 'Download ' + filename;
+            downloadElement.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+            downloadElement.setAttribute('download', filename);
+
+            // downloadElement.style.display = 'none';
+            document.body.appendChild(downloadElement);
+
+            console.log('Downloading ' + filename)
+            return '// Add '+filename+' to constructor...';
+        }
+
         return content;
     }
 }

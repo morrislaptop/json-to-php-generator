@@ -28,7 +28,7 @@
 
       <Settings v-model="settings" />
     </Card>
-    <Card v-if="code">
+    <Card v-if="code" id="code">
       <Code
         :code="code"
         language="php"
@@ -60,4 +60,3 @@ const jsonContent = ref('');
 const { settings } = useSettings();
 const { error, code } = useJsonConverter({ jsonContent, settings })
 </script>
-

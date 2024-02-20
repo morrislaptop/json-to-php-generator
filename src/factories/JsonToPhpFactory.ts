@@ -11,6 +11,6 @@ export default class JsonToPhpFactory {
             throw new Error('Unable to decode json content');
         }
 
-        return PhpClassFactory.make(jsonObject, 'RootObject');
+        return PhpClassFactory.make(jsonObject, import.meta.env.VITE_ROOT || 'RootObject');
     }
 }

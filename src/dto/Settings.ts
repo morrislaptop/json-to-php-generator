@@ -32,6 +32,8 @@ export default interface Settings {
     addFromJsonMethod: boolean;
     jsonIsArray: boolean;
 
+    download: boolean,
+
     docblock: PhpDocblock;
 }
 
@@ -78,13 +80,13 @@ export const createDefaultSettings = (): Settings => {
         phpVersion: PhpVersion.PHP82,
 
         classCase: StringCase.PascalCase,
-        propertyCase: StringCase.CamelCase,
+        propertyCase: StringCase.Original,
 
         propertyVisibility: PhpVisibility.Public,
         propertyDocblock: PhpDocblock.Necessary,
         propertyDocblockType: PropertyDocblockType.Inline,
         propertyAddExtraNewLine: false,
-        readonlyProperties: false,
+        readonlyProperties: true,
 
         addGetters: false,
         getterCase: StringCase.CamelCase,
@@ -93,14 +95,16 @@ export const createDefaultSettings = (): Settings => {
         isFluentSetter: true,
 
         addConstructor: true,
-        constructorPropertyPromotion: false,
+        constructorPropertyPromotion: true,
 
-        finalClasses: false,
+        finalClasses: true,
         readonlyClasses: false,
-        allPropertiesNullable: false,
+        allPropertiesNullable: true,
 
         addFromJsonMethod: false,
         jsonIsArray: true,
+
+        download: true,
 
         docblock: PhpDocblock.Necessary,
     }

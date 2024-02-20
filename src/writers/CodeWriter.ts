@@ -8,7 +8,13 @@ export default class CodeWriter {
     private indentation = '';
 
     public openClass(name: string, options?: { isFinal?: boolean; isReadonly?: boolean }): void {
-        this.writeLine(`${(options?.isFinal ? 'final ' : '')}${(options?.isReadonly ? 'readonly ' : '')}class ${name}`);
+        this.writeLine(`<?php`);
+        this.writeLine(``);
+        this.writeLine(`declare(strict_types=1);`);
+        this.writeLine(``);
+        this.writeLine(`namespace ${import.meta.env.VITE_NS};`);
+        this.writeLine(``);
+        this.writeLine(`${(options?.isFinal ? 'final ' : '')}${(options?.isReadonly ? 'readonly ' : '')}class ${name} extends \\Spatie\\LaravelData\\Data `);
         this.writeLine('{');
         this.indent();
     }
