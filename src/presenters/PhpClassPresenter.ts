@@ -41,6 +41,7 @@ export default class PhpClassPresenter {
 
         // open new class
         codeWriter.openClass(this.getClassName(), {
+            namespace: this.settings.namespace,
             isFinal: this.settings.finalClasses,
             isReadonly: this.settings.readonlyClasses
         });

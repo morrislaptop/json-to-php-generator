@@ -7,12 +7,12 @@ export default class CodeWriter {
     private content = '';
     private indentation = '';
 
-    public openClass(name: string, options?: { isFinal?: boolean; isReadonly?: boolean }): void {
+    public openClass(name: string, options?: { namespace?: string; isFinal?: boolean; isReadonly?: boolean }): void {
         this.writeLine(`<?php`);
         this.writeLine(``);
         this.writeLine(`declare(strict_types=1);`);
         this.writeLine(``);
-        this.writeLine(`namespace ${import.meta.env.VITE_NS};`);
+        this.writeLine(options?.namespace ? `namespace ${options?.namespace};` : '');
         this.writeLine(``);
         this.writeLine(`${(options?.isFinal ? 'final ' : '')}${(options?.isReadonly ? 'readonly ' : '')}class ${name} extends \\Spatie\\LaravelData\\Data `);
         this.writeLine('{');

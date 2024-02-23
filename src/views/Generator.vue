@@ -22,6 +22,26 @@
         placeholder="Paste JSON content here..."
       />
 
+      <Label for="json-input">
+        Namespace
+      </Label>
+      <TextInput
+        id="namespace"
+        v-model="settings.namespace"
+        class="mb-4"
+        placeholder="App\Data"
+      />
+
+      <Label for="json-input">
+        Root Class
+      </Label>
+      <TextInput
+        id="namespace"
+        v-model="rootClass"
+        class="mb-4"
+        placeholder="CancellationResponse"
+      />
+
       <h2 class="text-dark-700 dark:text-dark-300 font-bold text-2xl mb-2">
         Settings
       </h2>
@@ -49,6 +69,7 @@ import Alert from '@/components/Alert.vue';
 import Card from '@/components/Card.vue';
 import Label from '@/components/form/Label.vue';
 import TextArea from '@/components/form/TextArea.vue';
+import TextInput from '@/components/form/TextInput.vue';
 import ThemeColorSwitch from '@/components/ThemeColorSwitch.vue';
 import Settings from '@/components/Settings.vue';
 import Code from '@/components/Code.vue'
@@ -56,7 +77,14 @@ import { useJsonConverter } from '@/hooks/use-json-converter';
 import { useSettings } from '@/hooks/use-settings';
 
 const jsonContent = ref('');
+const namespace = ref('')
+const rootClass = ref(')')
 
 const { settings } = useSettings();
-const { error, code } = useJsonConverter({ jsonContent, settings })
+const { error, code } = useJsonConverter({ 
+  jsonContent, 
+  namespace,
+  rootClass,
+  settings 
+})
 </script>

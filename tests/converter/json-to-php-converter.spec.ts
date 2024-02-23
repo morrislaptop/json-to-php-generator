@@ -510,11 +510,12 @@ const cases = dataCases.map((dataCase) => {
 describe('JsonToPhpFactory tests', () => {
     test.concurrent.each(cases)('It can parse %s', async (name, jsonData, settingsToTest) => {
         const jsonContent = ref(jsonData);
+        const rootClass = ref('RootObject')
 
         const [{ settings}] = withSetup(() => useSettings());
         settings.value = settingsToTest;
 
-        const [{ code }] = withSetup(() => useJsonConverter({ jsonContent, settings }));
+        const [{ code }] = withSetup(() => useJsonConverter({ jsonContent, rootClass, settings }));
 
         const resultPath = path.resolve(__dirname, `./fixtures/results/${snakeCase(name)}.txt`, )
 

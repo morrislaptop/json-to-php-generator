@@ -6,6 +6,7 @@ import PhpClassPresenter from '@/presenters/PhpClassPresenter';
 
 interface UseJsonConverterProps {
     jsonContent: Ref<string>;
+    rootClass: Ref<string>;
     settings: Ref<Settings>;
 }
 
@@ -14,7 +15,7 @@ interface UseJsonConverter {
     code: ComputedRef<string | null>;
 }
 
-export const useJsonConverter = ({ jsonContent, settings }: UseJsonConverterProps): UseJsonConverter => {
+export const useJsonConverter = ({ jsonContent, rootClass, settings }: UseJsonConverterProps): UseJsonConverter => {
     const error = ref<string | null>(null);
 
     const code = computed(() => {
@@ -27,7 +28,7 @@ export const useJsonConverter = ({ jsonContent, settings }: UseJsonConverterProp
         let result: PhpClass;
 
         try {
-            result = JsonToPhpFactory.make(jsonContent.value);
+            result = JsonToPhpFactory.make(jsonContent.value, rootClass.value);
         } catch (e) {
             error.value = (e as Error).message;
             return null;

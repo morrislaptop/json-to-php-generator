@@ -2,7 +2,7 @@ import PhpClassFactory from '@/factories/PhpClassFactory';
 import PhpClass from '@/dto/PhpClass';
 
 export default class JsonToPhpFactory {
-    public static make(content: string): PhpClass {
+    public static make(content: string, rootClass: string): PhpClass {
         let jsonObject;
 
         try {
@@ -11,6 +11,6 @@ export default class JsonToPhpFactory {
             throw new Error('Unable to decode json content');
         }
 
-        return PhpClassFactory.make(jsonObject, import.meta.env.VITE_ROOT || 'RootObject');
+        return PhpClassFactory.make(jsonObject, rootClass);
     }
 }
