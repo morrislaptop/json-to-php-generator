@@ -78,12 +78,11 @@ import { useSettings } from '@/hooks/use-settings';
 
 const jsonContent = ref('');
 const namespace = ref('')
-const rootClass = ref(')')
+const rootClass = ref('')
 
 const { settings } = useSettings();
 const { error, code } = useJsonConverter({ 
   jsonContent, 
-  namespace,
   rootClass,
   settings 
 })
