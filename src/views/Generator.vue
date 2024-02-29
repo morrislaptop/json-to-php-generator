@@ -48,11 +48,13 @@
 
       <Settings v-model="settings" />
     </Card>
-    <Card v-if="code" id="code">
+    <Card v-if="code && ! settings.download" id="code">
       <Code
         :code="code"
         language="php"
       />
+    </Card>
+    <Card v-show="code && settings.download" id="downloads">
     </Card>
     <Card v-if="error">
       <Alert>

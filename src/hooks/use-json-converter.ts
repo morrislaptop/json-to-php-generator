@@ -34,6 +34,8 @@ export const useJsonConverter = ({ jsonContent, rootClass, settings }: UseJsonCo
             return null;
         }
 
+        document.querySelectorAll('.download').forEach(el => el.remove());
+
         return (new PhpClassPresenter(result, settings.value)).toString();
     });
 
