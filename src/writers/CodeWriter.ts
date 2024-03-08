@@ -14,6 +14,8 @@ export default class CodeWriter {
         this.writeLine(``);
         this.writeLine(options?.namespace ? `namespace ${options?.namespace};` : '');
         this.writeLine(``);
+        this.writeLine(`// Generated via https://morrislaptop.github.io/json-to-php-generator`);
+        this.writeLine(``);
         this.writeLine(`${(options?.isFinal ? 'final ' : '')}${(options?.isReadonly ? 'readonly ' : '')}class ${name} extends \\Spatie\\LaravelData\\Data `);
         this.writeLine('{');
         this.indent();
